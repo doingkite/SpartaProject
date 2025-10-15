@@ -1,0 +1,20 @@
+# Visual Studio
+.vs
+*.VC.db
+*.VC.opendb
+*.sln
+*.suo
+
+# Build files
+Binaries
+Build
+Intermediate
+DerivedDataCache
+
+# Saved files
+Saved
+
+# Other
+.idea
+.vscode
+*.xcodeproj
