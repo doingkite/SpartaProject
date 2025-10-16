@@ -7,6 +7,7 @@ USpartaGameInstance::USpartaGameInstance()
 
 }
 
+//실제 점수 데이터를 보관하고 수정하는 금고 역할
 void USpartaGameInstance::AddToScore(int32 Amount)
 {
 	TotalScore += Amount;

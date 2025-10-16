@@ -13,6 +13,10 @@ public:
 	AMineItem();
 
 	USphereComponent* ExplosionCollision;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Item|Effects")
+	UParticleSystem* ExplosionParticle;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Item|Effects")
+	USoundBase* ExplosionSound;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 	float ExplosionDelay;
@@ -21,10 +25,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 	int32 ExplosionDamage;
 
+	bool bHasExploded;
 	FTimerHandle ExplosionTimerHandle;
 
 	virtual void ActivateItem(AActor* Activator) override;
 
 	void Explode();
 
+private:
+	TArray<AActor*> ActorsToDamage;
 };

@@ -6,12 +6,17 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+class UWidgetComponent;
 struct FInputActionValue;
 
 UCLASS()
 class SPARTAPROJECT_API ASpartaCharacter : public ACharacter
 {
 	GENERATED_BODY()
+
+	//스크린 - UI에 고정된 것 처럼 보인다
+	//월드 - 캐릭터의 움직임에 따라 글씨도 바뀜
+	//-> 2d상에 렌더링 되려면 스크린이 맞음
 
 public:
 	
@@ -22,6 +27,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	UCameraComponent* CameraComp;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI")
+	UWidgetComponent* OverHeadWidget;
+
 	UFUNCTION(BlueprintPure, Category = "Health")
 	float GetHealth() const;
 
@@ -29,6 +37,7 @@ public:
 	void AddHealth(float Amount);
 
 protected:
+	virtual void BeginPlay() override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
@@ -68,4 +77,5 @@ protected:
 	void StopSprint(const FInputActionValue& value);
 
 	void OnDeath();
+	void UpdateOverheadHP();
 };

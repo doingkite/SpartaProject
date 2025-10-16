@@ -4,7 +4,6 @@
 #include "GameFramework/GameState.h"
 #include "SpartaGameState.generated.h"
 
-
 UCLASS()
 class SPARTAPROJECT_API ASpartaGameState : public AGameState
 {
@@ -21,7 +20,7 @@ public:
 	int32 SpawnedCoinCount;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Coin")
 	int32 CollectedCoinCount;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Level")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Level")
 	float LevelDuration;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Level")
 	int32 CurrentLevelIndex;
@@ -32,6 +31,7 @@ public:
 	TArray<FName> LevelMapNames;
 
 	FTimerHandle LevelTimerHandle;
+	FTimerHandle HUDUpdateTimerHandle;
 
 	UFUNCTION(BlueprintPure, Category = "Score")
 	int32 GetScore() const;
@@ -44,4 +44,5 @@ public:
 	void OnLevelTimeUp();
 	void OnCoinCollected();
 	void EndLevel();
+	void UpdateHUD();
 };

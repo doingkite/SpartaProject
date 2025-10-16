@@ -16,6 +16,7 @@ public:
 	
 	ABaseItem();
 
+protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Item")
 	USceneComponent* Scene;
 
@@ -24,8 +25,10 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Item|Component")
 	UStaticMeshComponent* StaticMesh;
-
-protected:
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Item|Effects")
+	UParticleSystem* PickupParticle;
+	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Item|Effects")
+	USoundBase* PickupSound;
 
 	virtual void OnItemOverlap
 	(

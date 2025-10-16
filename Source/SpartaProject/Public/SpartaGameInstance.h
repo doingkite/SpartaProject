@@ -19,5 +19,5 @@ public:
 	int32 CurrentLevelIndex;
 
 	UFUNCTION(BlueprintCallable, Category = "GameData")
-	void AddToScore(int32 Amount);
+	void AddToScore(int32 Amount); //Á¡¼ö ÃÑÇÕ
 };
