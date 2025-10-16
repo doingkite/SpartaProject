@@ -32,7 +32,7 @@ void AMineItem::Explode()
 	TArray<AActor*> OverlappingActors;
 	ExplosionCollision->GetOverlappingActors(OverlappingActors);
 
-	for (AActor* Actor : OverlappingActors)
+	for (AActor* Actor : ActorsToDamage)
 	{
 		if (Actor && Actor->ActorHasTag("Player"))
 		{
